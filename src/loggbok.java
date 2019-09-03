@@ -1,15 +1,17 @@
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Scanner;
 
 public class loggbok {
     public static void main(String[] args) {
         Scanner tgb = new Scanner(System.in);
         ArrayList<String> posts = new ArrayList<String>();
-        int running = 1;
-        int seePost = 1;
+        boolean running = true;
+        boolean seePost = true;
 
-        while (running == 1) {
-            seePost = 1;
+        while (running) {
+            seePost = true;
             System.out.println("Vad vill du göra?");
             showMenu();
 
@@ -17,7 +19,7 @@ public class loggbok {
             tgb.nextLine();
 
             if (choice == 1) {
-                postsMenu(tgb, posts, seePost);
+                postsMenu(tgb, posts, true);
             }
 
             if (choice == 2) {
@@ -38,29 +40,35 @@ public class loggbok {
 
             if (choice == 6) {
                 System.out.println("Avslutar");
-                running = 0;
+                running = false;
             }
         }
 
     }
 
-    private static void postsMenu(Scanner tgb, ArrayList<String> posts, int seePost) {
-        while (seePost == 1) {
+    private static void postsMenu(Scanner tgb, ArrayList<String> posts, boolean seePost) {
+        while (seePost) {
             System.out.println("Skriv 0 för att gå tillbaka till menyn");
             System.out.println("Posts: ");
             for (int i = 0 ; i < posts.size() ; i++) {
                 System.out.println("[ " + posts.get(i) + " ]");
             }
-            seePost = tgb.nextInt();
+            if (tgb.nextInt() == 0) {
+                seePost = false;
+            }
         }
     }
 
     private static void addPost(Scanner tgb, ArrayList<String> posts) {
+        //fixar så man kan hämta en tidsstamp
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd-HH:mm");
+        //Skapar och sparar loggen i en arraylist
         System.out.println("Vad ska loggen heta?");
-        String name = tgb.nextLine();
+        String name = tgb.nextLine() + " - " + sdf.format(cal.getTime());
         System.out.println("Innehål");
         String info = tgb.nextLine();
-        String post = name + " - " + info;
+        String post = name + " : " + info;
         posts.add(post);
     }
 
