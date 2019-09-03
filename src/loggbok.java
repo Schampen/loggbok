@@ -17,14 +17,7 @@ public class loggbok {
             tgb.nextLine();
 
             if (choice == 1) {
-                while (seePost == 1) {
-                    System.out.println("Skriv 0 för att gå tillbaka till menyn");
-                    System.out.println("Posts: ");
-                    for (int i = 0 ; i < posts.size() ; i++) {
-                        System.out.println("[ " + posts.get(i) + " ]");
-                    }
-                    seePost = tgb.nextInt();
-                }
+                postsMenu(tgb, posts, seePost);
             }
 
             if (choice == 2) {
@@ -49,6 +42,17 @@ public class loggbok {
             }
         }
 
+    }
+
+    private static void postsMenu(Scanner tgb, ArrayList<String> posts, int seePost) {
+        while (seePost == 1) {
+            System.out.println("Skriv 0 för att gå tillbaka till menyn");
+            System.out.println("Posts: ");
+            for (int i = 0 ; i < posts.size() ; i++) {
+                System.out.println("[ " + posts.get(i) + " ]");
+            }
+            seePost = tgb.nextInt();
+        }
     }
 
     private static void addPost(Scanner tgb, ArrayList<String> posts) {
