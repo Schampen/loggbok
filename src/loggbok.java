@@ -65,10 +65,10 @@ public class loggbok {
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd-HH:mm");
         //Skapar och sparar loggen i en arraylist
         System.out.println("Vad ska loggen heta?");
-        String name = tgb.nextLine() + " - " + sdf.format(cal.getTime());
+        String date = sdf.format(cal.getTime());
         System.out.println("Innehål");
         String info = tgb.nextLine();
-        String post = name + " : " + info;
+        String post = date + " - " + info;
         posts.add(post);
     }
 
