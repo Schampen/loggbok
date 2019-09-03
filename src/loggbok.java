@@ -9,6 +9,7 @@ public class loggbok {
         int seePost = 1;
 
         while (running == 1) {
+            seePost = 1;
             System.out.println("Vad vill du göra?");
             showMenu();
 
