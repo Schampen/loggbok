@@ -18,6 +18,10 @@ public class loggbok {
         int choice = tgb.nextInt();
         tgb.nextLine();
 
+        if (choice == 1) {
+            System.out.println("Funktionen finns inte än");
+        }
+
         if (choice == 2) {
             System.out.println("Vad ska loggen heta?");
             String name = tgb.nextLine();
@@ -25,7 +29,22 @@ public class loggbok {
             String info = tgb.nextLine();
             String post = name + "\n\n" + info;
             posts.add(post);
-            System.out.println(posts);
+        }
+
+        if (choice == 3) {
+            System.out.println("Funktionen finns inte än");
+        }
+
+        if (choice == 4) {
+            System.out.println("Funktionen finns inte än");
+        }
+
+        if (choice == 5) {
+            System.out.println("Funktionen finns inte än");
+        }
+
+        if (choice == 6) {
+            System.out.println("Funktionen finns inte än");
         }
     }
 }
