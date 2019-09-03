@@ -7,13 +7,7 @@ public class loggbok {
         ArrayList<String> posts = new ArrayList<String>();
 
         System.out.println("Vad vill du göra?");
-        System.out.println(
-                "1, visa \n" +
-                "2, lägg till post \n" +
-                "3, uppdatera \n" +
-                "4, spara \n" +
-                "5, läs in \n" +
-                "6, avsluta" );
+        showMenu();
 
         int choice = tgb.nextInt();
         tgb.nextLine();
@@ -23,12 +17,7 @@ public class loggbok {
         }
 
         if (choice == 2) {
-            System.out.println("Vad ska loggen heta?");
-            String name = tgb.nextLine();
-            System.out.println("Innehål");
-            String info = tgb.nextLine();
-            String post = name + "\n\n" + info;
-            posts.add(post);
+            addPost(tgb, posts);
         }
 
         if (choice == 3) {
@@ -46,5 +35,24 @@ public class loggbok {
         if (choice == 6) {
             System.out.println("Funktionen finns inte än");
         }
+    }
+
+    private static void addPost(Scanner tgb, ArrayList<String> posts) {
+        System.out.println("Vad ska loggen heta?");
+        String name = tgb.nextLine();
+        System.out.println("Innehål");
+        String info = tgb.nextLine();
+        String post = name + "\n\n" + info;
+        posts.add(post);
+    }
+
+    private static void showMenu() {
+        System.out.println(
+                "1, visa \n" +
+                "2, lägg till post \n" +
+                "3, uppdatera \n" +
+                "4, spara \n" +
+                "5, läs in \n" +
+                "6, avsluta" );
     }
 }
