@@ -8,13 +8,12 @@ public class LogEntry {
     private String message;
     private String logName;
 
-    public LogEntry(String message) {
+    public LogEntry(String logName, String message) {
+        this.logName = logName;
         this.message = message;
         createdAt = new Date();
         updatedAt = new Date();
     }
-
-    
 
     public Date getCreatedAt() {
         return createdAt;
@@ -28,9 +27,14 @@ public class LogEntry {
         return message;
     }
 
+    public String getLogName() {
+        return logName;
+    }
+
     @Override
     public String toString() {
         return "LogEntry{" +
+                ", logName ='" + logName + "'" +
                 "createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +
                 ", message='" + message + '\'' +
