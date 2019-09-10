@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class loggbok {
     public static void main(String[] args) {
         Scanner tgb = new Scanner(System.in);
-        ArrayList<LogEntry> posts = new ArrayList<LogEntry>();
+        ArrayList<LogEntry> posts = new ArrayList<>();
         boolean running = true;
         boolean seePost = true;
 
@@ -31,7 +31,13 @@ public class loggbok {
             }
 
             if (choice == 3) {
-                System.out.println("Funktionen finns inte än");
+                System.out.println("Vilken logg vill du ändra?");
+                int toUpdate = tgb.nextInt();
+                System.out.println(posts.get(toUpdate).toString());
+                System.out.println("Är det här rätt log? \n1 för ja | 0 för nej");
+                int updateChoice = tgb.nextInt();
+
+
             }
 
             if (choice == 4) {
