@@ -75,7 +75,7 @@ public class loggbok {
 
     private static void show(ArrayList<LogEntry> posts) {
         for (int i = 0 ; i < posts.size() ; i++) {
-            System.out.println(i + " [ " + posts.get(i).toString() + " ]");
+            System.out.println(i + " [ " + posts.get(i).toString() + " ] \n");
         }
     }
 
