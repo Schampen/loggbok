@@ -33,12 +33,10 @@ public class LogEntry {
 
     @Override
     public String toString() {
-        return "LogEntry{" +
-                ", logName ='" + logName + "'" +
-                "createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
-                ", message='" + message + '\'' +
-                '}';
+        return logName + " - " +
+                "created at " + createdAt +
+                "\n { " + message + " \' }" +
+                "\n last updated at " + updatedAt;
     }
 
     public void update(String newMessage) {
