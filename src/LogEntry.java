@@ -35,11 +35,12 @@ public class LogEntry {
     public String toString() {
         return logName + " - " +
                 "created at " + createdAt +
-                "\n { " + message + " \' }" +
+                "\n { " + message + " }" +
                 "\n last updated at " + updatedAt;
     }
 
     public void update(String newMessage) {
-
+        this.message = newMessage;
+        updatedAt = new Date();
     }
 }

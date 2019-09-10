@@ -12,7 +12,7 @@ public class loggbok {
         Scanner tgb = new Scanner(System.in);
         ArrayList<LogEntry> posts = new ArrayList<>();
         boolean running = true;
-        boolean seePost = true;
+        boolean seePost;
 
         while (running) {
             seePost = true;
@@ -31,12 +31,7 @@ public class loggbok {
             }
 
             if (choice == 3) {
-                System.out.println("Vilken logg vill du ändra?");
-                int toUpdate = tgb.nextInt();
-                System.out.println(posts.get(toUpdate).toString());
-                System.out.println("Är det här rätt log? \n1 för ja | 0 för nej");
-                int updateChoice = tgb.nextInt();
-
+                updatePost(tgb, posts);
 
             }
 
@@ -56,16 +51,31 @@ public class loggbok {
 
     }
 
+    private static void updatePost(Scanner tgb, ArrayList<LogEntry> posts) {
+        System.out.println("Vilken logg vill du ändra?");
+        show(posts);
+        int elementAt = tgb.nextInt();
+        tgb.nextLine();
+        System.out.println("[ " + posts.get(elementAt).toString() + " ]");
+        System.out.println("Uppdatera");
+        String newMessage = tgb.nextLine();
+        posts.get(elementAt).update(newMessage);
+    }
+
     private static void postsMenu(Scanner tgb, ArrayList<LogEntry> posts, boolean seePost) {
         while (seePost) {
-            System.out.println("Skriv 0 för att gå tillbaka till menyn");
             System.out.println("Posts: ");
-            for (int i = 0 ; i < posts.size() ; i++) {
-                System.out.println("[ " + posts.get(i).toString() + " ]");
-            }
+            show(posts);
             if (tgb.nextInt() == 0) {
                 seePost = false;
             }
+            System.out.println("Skriv 0 för att gå tillbaka till menyn");
+        }
+    }
+
+    private static void show(ArrayList<LogEntry> posts) {
+        for (int i = 0 ; i < posts.size() ; i++) {
+            System.out.println(i + " [ " + posts.get(i).toString() + " ]");
         }
     }
 
