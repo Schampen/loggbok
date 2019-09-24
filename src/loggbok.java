@@ -18,25 +18,9 @@ public class loggbok {
         ArrayList<LogEntry> posts = new ArrayList<>();
         boolean running = true;
         boolean seePost;
-        String loggname;
         String loggfil = "loggbok.txt";
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd-HH:mm");
-
-        try {
-            BufferedReader read = new BufferedReader(new FileReader(loggfil));
-            while ((loggname = read.readLine()) != null) {
-                Long createdDate = Long.parseLong(read.readLine());
-                Date created = new Date(createdDate);
-                String loggBody = read.readLine();
-                Long updatedDate = Long.parseLong(read.readLine());
-                Date updated = new Date(updatedDate);
-                posts.add(new LogEntry(loggname,loggBody,created,updated));
-            }
-            read.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        readSave(posts, loggfil);
 
         while (running) {
             seePost = true;
@@ -85,9 +69,27 @@ public class loggbok {
 
     }
 
+    private static void readSave(ArrayList<LogEntry> posts, String loggfil) {
+        String loggname;
+        try {
+            BufferedReader read = new BufferedReader(new FileReader(loggfil));
+            while ((loggname = read.readLine()) != null) {
+                Long createdDate = Long.parseLong(read.readLine());
+                Date created = new Date(createdDate);
+                String loggBody = read.readLine();
+                Long updatedDate = Long.parseLong(read.readLine());
+                Date updated = new Date(updatedDate);
+                posts.add(new LogEntry(loggname,loggBody,created,updated));
+            }
+            read.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private static void updatePost(Scanner tgb, ArrayList<LogEntry> posts) {
         Calendar cal = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("YYYY/MM/dd-HH:mm");
+        SimpleDateFormat sdf = new SimpleDateFormat("YYYY/MM/dd-HH:mm:ss");
         Date updated = null;
         System.out.println("Vilken logg vill du ändra?");
         show(posts);
@@ -125,7 +127,7 @@ public class loggbok {
     private static void addPost(Scanner tgb, ArrayList<LogEntry> posts) {
         try {
             Calendar cal = Calendar.getInstance();
-            SimpleDateFormat sdf = new SimpleDateFormat("YYYY/MM/dd-HH:mm");
+            SimpleDateFormat sdf = new SimpleDateFormat("YYYY/MM/dd-HH:mm:ss");
             System.out.println("Vad ska loggen heta?");
             String name = tgb.nextLine();
             System.out.println("Vad ska stå i loggen?");
