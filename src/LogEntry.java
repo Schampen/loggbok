@@ -1,5 +1,3 @@
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 public class LogEntry {
@@ -8,11 +6,11 @@ public class LogEntry {
     private String message;
     private String logName;
 
-    public LogEntry(String logName, String message) {
+    public LogEntry(String logName, String message, Date created, Date updated) {
         this.logName = logName;
         this.message = message;
-        createdAt = new Date();
-        updatedAt = new Date();
+        this.createdAt = created;
+        this.updatedAt = updated;
     }
 
     public Date getCreatedAt() {
@@ -39,8 +37,8 @@ public class LogEntry {
                 "\n last updated at " + updatedAt;
     }
 
-    public void update(String newMessage) {
+    public void update(String newMessage, Date updated) {
         this.message = newMessage;
-        updatedAt = new Date();
+        this.updatedAt = updated;
     }
 }
